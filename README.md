@@ -44,9 +44,45 @@ const item = await FastStorage.getItem("key");
 
 All methods are asynchronous, just like AsyncStorage.
 
-| Prop       |     Params      | Returns  | Description                    |
-| :--------- | :-------------: | :------: | :----------------------------- |
-| setItem    |  `key`, `value` |  `value` |  Allows to set an item         |
-| getItem    |      `key`      |  `value` |  Retrieve the item             |
-| removeItem |      `key`      |   null   |  Remove an item from the store |
-| clearStore |       none      |   null   |  Clear the entire store        |
+| Prop        |            Params            |           Returns            | Description                           |
+| :---------- | :--------------------------: | :--------------------------: | :------------------------------------ |
+| setItem     |        `key`, `value`        |           `value`            | Allows to set an item                 |
+| getItem     |            `key`             |           `value`            | Retrieve the item                     |
+| removeItem  |            `key`             |             null             | Remove an item from the store         |
+| clearStore  |             none             |             null             | Clear the entire store                |
+| multiGet    |         Array<`key`>         | Array<Array<`key`, `value`>> | Retrieve multiples item               |
+| multiGet    | Array<Array<`key`, `value`>> |             null             | Set multiples items                   |
+| multiRemove |         Array<`key`>         |             null             | Remove multiples items from the store |
+
+
+## multiGet
+
+Get multiple values at once.
+
+```static multiGet(keys: Array<string>): Promise<Array<Array<string, string>>>```
+
+```js
+    const values = await FastStorage.multiGet(['test', 'key'])
+    console.log(values) // [['test', 'testValue'], ['key', 'keyValue']]
+```
+
+## multiSet
+
+Set multiple values at once.
+
+```static multiSet(keys: Array<Array<string, string>>): Promise<void>```
+
+```js
+    await FastStorage.multiSet([['test', 'testValue'], ['key', 'keyValue']])
+```
+
+
+## multiRemove
+
+Remove multiples values at once.
+
+```static multiRemove(keys: Array<string>): Promise<void>```
+
+```js
+    await FastStorage.multiRemove(['test', 'key'])
+```
