@@ -17,9 +17,9 @@ RCT_EXPORT_METHOD(setItem:(NSString*)key
                   rejecter:(RCTPromiseRejectBlock)reject
                   ) {
     dispatch_async(dispatch_queue_create("FastStorage.setItem", 0), ^{
-        MMKV *mmkv = [MMKV defaultMMKV];
         dispatch_async(dispatch_get_main_queue(), ^{
             @try {
+                MMKV *mmkv = [MMKV defaultMMKV];
                 [mmkv setObject:value forKey:key];
                 resolve(value);
             }
@@ -37,9 +37,9 @@ RCT_EXPORT_METHOD(getItem:(NSString*)key
                   rejecter:(RCTPromiseRejectBlock)reject
                   ) {
     dispatch_async(dispatch_queue_create("FastStorage.getItem", 0), ^{
-        MMKV *mmkv = [MMKV defaultMMKV];
         dispatch_async(dispatch_get_main_queue(), ^{
             @try {
+                MMKV *mmkv = [MMKV defaultMMKV];
                 resolve([mmkv getObjectOfClass:NSString.class forKey:key]);
             }
             @catch (NSException *exception) {
@@ -56,9 +56,9 @@ RCT_EXPORT_METHOD(removeItem:(NSString*)key
                   rejecter:(RCTPromiseRejectBlock)reject
                   ) {
     dispatch_async(dispatch_queue_create("FastStorage.removeItem", 0), ^{
-        MMKV *mmkv = [MMKV defaultMMKV];
         dispatch_async(dispatch_get_main_queue(), ^{
             @try {
+                MMKV *mmkv = [MMKV defaultMMKV];
                 [mmkv removeValueForKey:key];
                 resolve(@"");
             }
@@ -75,9 +75,9 @@ RCT_EXPORT_METHOD(clearStore:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject
                   ) {
     dispatch_async(dispatch_queue_create("FastStorage.clearStore", 0), ^{
-        MMKV *mmkv = [MMKV defaultMMKV];
         dispatch_async(dispatch_get_main_queue(), ^{
             @try {
+                MMKV *mmkv = [MMKV defaultMMKV];
                 [mmkv clearAll];
                 resolve(@"");
             }
