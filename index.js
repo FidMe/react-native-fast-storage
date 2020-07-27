@@ -1,7 +1,19 @@
-import { NativeModules } from "react-native";
+import {NativeModules} from 'react-native';
 
-const { RNFastStorage } = NativeModules;
+const {RNFastStorage} = NativeModules;
 
 if (RNFastStorage.setupLibrary) RNFastStorage.setupLibrary();
 
-export default RNFastStorage;
+export default {
+  ...RNFastStorage,
+  multiGet: (keys) =>
+    Promise.all(
+      keys.map(async (key) => [key, await RNFastStorage.getItem(key)]),
+    ),
+  multiSet: (keyValuePairs) =>
+    Promise.all(
+      keyValuePairs.map(([key, value]) => RNFastStorage.setItem(key, value)),
+    ),
+  multiRemove: (keys) =>
+    Promise.all(keys.map((key) => RNFastStorage.removeItem(key))),
+};
