@@ -4,26 +4,26 @@ def safeExtGet(prop, fallback) {
 
 buildscript {
   repositories {
-    jcenter()
-    google()
-    maven {
+      mavenCentral()
+      google()
+      maven {
       url 'https://maven.google.com'
     }
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.0'
+    classpath 'com.android.tools.build:gradle:4.2.2'
   }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion safeExtGet('compileSdkVersion', 28)
-  buildToolsVersion safeExtGet('buildToolsVersion', '28.0.3')
+  compileSdkVersion safeExtGet('compileSdkVersion', 30)
+  buildToolsVersion safeExtGet('buildToolsVersion', '30.0.2')
   defaultConfig {
-      minSdkVersion safeExtGet('minSdkVersion', 16)
-      targetSdkVersion safeExtGet('targetSdkVersion', 28)
+      minSdkVersion safeExtGet('minSdkVersion', 21)
+      targetSdkVersion safeExtGet('targetSdkVersion', 30)
   }
   lintOptions {
     abortOnError false
@@ -36,11 +36,11 @@ repositories {
   maven {
    url 'https://maven.google.com'
   }
-  maven { url "https://jitpack.io" }
+  maven { url "https://www.jitpack.io" }
 }
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation 'com.tencent:mmkv-static:1.0.23'
+    implementation 'com.tencent:mmkv-static:1.2.10'
 }
   
