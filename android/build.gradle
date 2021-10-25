@@ -40,6 +40,7 @@ repositories {
 }
 
 dependencies {
+    //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'
     implementation 'com.tencent:mmkv-static:1.2.10'
 }
