@@ -1,8 +1,8 @@
-import {NativeModules} from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 
-const {RNFastStorage} = NativeModules;
+const { RNFastStorage } = NativeModules;
 
-if (RNFastStorage.setupLibrary) RNFastStorage.setupLibrary();
+if (Platform.OS === 'ios' && RNFastStorage.setupLibrary) RNFastStorage.setupLibrary();
 
 export default {
   ...RNFastStorage,

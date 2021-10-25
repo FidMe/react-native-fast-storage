@@ -32,9 +32,7 @@ public class RNFastStorageModule extends ReactContextBaseJavaModule {
       MMKV kv = MMKV.defaultMMKV();
       kv.encode(key, value);
       promise.resolve(value);
-    } catch (Error e) {
-      promise.reject("Error", "Unable to setItem");
-    } catch (Exception e) {
+    } catch (Error | Exception e) {
       promise.reject("Error", "Unable to setItem");
     }
   }
@@ -44,9 +42,7 @@ public class RNFastStorageModule extends ReactContextBaseJavaModule {
     try {
       MMKV kv = MMKV.defaultMMKV();
       promise.resolve(kv.decodeString(key));
-    } catch (Error e) {
-      promise.reject("Error", "Unable to getItem");
-    } catch (Exception e) {
+    } catch (Error | Exception e) {
       promise.reject("Error", "Unable to getItem");
     }
   }
@@ -57,9 +53,7 @@ public class RNFastStorageModule extends ReactContextBaseJavaModule {
       MMKV kv = MMKV.defaultMMKV();
       kv.removeValueForKey(key);
       promise.resolve(key);
-    } catch (Error e) {
-      promise.reject("Error", "Unable to removeItem");
-    } catch (Exception e) {
+    } catch (Error | Exception e) {
       promise.reject("Error", "Unable to removeItem");
     }
   }
@@ -70,9 +64,7 @@ public class RNFastStorageModule extends ReactContextBaseJavaModule {
       MMKV kv = MMKV.defaultMMKV();
       kv.clearAll();
       promise.resolve("Done");
-    } catch (Error e) {
-      promise.reject("Error", "Unable to removeItem");
-    } catch (Exception e) {
+    } catch (Error | Exception e) {
       promise.reject("Error", "Unable to removeItem");
     }
   }
